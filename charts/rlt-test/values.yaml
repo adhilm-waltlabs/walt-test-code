@@ -1,0 +1,33 @@
+replicaCount: 1
+
+imageCredentials:
+  create: false
+  name: registry-secret
+
+image:
+  repository: gcr.io/deft-upgrade-356210/adhil-php
+  tag: '1.0'
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  path: /
+  hosts:
+    - chart-example.local
+  tls: []
+
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
