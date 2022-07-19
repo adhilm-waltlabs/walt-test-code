@@ -73,4 +73,30 @@ helm install <resourece_name> .
 
 where [.] is the helm chart on present directory
 
+==
 
+Exposing the application to the world
+
+1. Use the service yaml with type as LoadBalancer
+2. The target port, container port and protocol on the service must match with the port on which the app is listening within the container/pod.
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: rlt-test
+    release: adhil-php
+  ports:
+      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
+    - port: 80
+      targetPort: 80
+      # Optional field
+      # By default and for convenience, the Kubernetes control plane will allocate a port from a range (default: 30000-32767)
+      protocol: TCP
+      
+      
+Command to expose: Kubectl expose <pod_name> <port_number>
