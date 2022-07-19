@@ -12,6 +12,7 @@ PREREQUISITES:
 4. GCP project
 5. Service account
 6. Terraform
+7. Helm (pre-installed in gcloud cli)
 
 INITIAL SETUP:
 
@@ -64,5 +65,12 @@ kubectl cluster-info
 
 =====================================================================================
 
-HELM deployment
+HELM deployment:
+
+Helm is used to install components into cluster using local helm chart.
+
+helm install <resourece_name> .
+
+where [.] is the helm chart on present directory
+
 
